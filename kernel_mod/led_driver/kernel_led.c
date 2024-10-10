@@ -220,6 +220,6 @@ module_init(led_module_init);
 module_exit(led_module_exit);
 
 MODULE_LICENSE("GPL");
-MODULE_AUTHOR("Your Name");
-MODULE_DESCRIPTION("A Simple Character Device Driver");
-MODULE_VERSION("0.1");
+MODULE_AUTHOR("LRQ");
+MODULE_DESCRIPTION("LED Driver");
+MODULE_VERSION("1.0");

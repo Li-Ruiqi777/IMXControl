@@ -1,0 +1,1 @@
+/home/lrq/linux/IMX6ULL/temp/arch/arm/boot/dts/imx6ul-pinfunc.h
