@@ -15,7 +15,7 @@ C_COMPILE ?= $(APP_C_COMPILE)
 CC_COMPILE ?= $(APP_CC_COMPILE)
 
 ###include Path
-INCLUDES ?=
+INCLUDES ?= 
 
 ###include library
 library ?= 
@@ -43,10 +43,10 @@ $(info used c compiler:$(C_COMPILE), c++ compiler:$(CC_COMPILE))
 #						Build Rules Region 
 #-------------------------------------------------------------------------------
 %.o : %.cpp
-	$(CC_COMPILE) $(CCFLAGS) -c $< -o $@ $(INCLUDES)
+	$(CC_COMPILE) $(CCFLAGS) -c $< -o $@ $(addprefix -I , $(INCLUDES))
 
 %.o : %.c
-	$(C_COMPILE) $(CFLAGS) -c $< -o $@ $(INCLUDES)
+	$(C_COMPILE) $(CFLAGS) -c $< -o $@ $(addprefix -I , $(INCLUDES))
 
 all : $(buildout)
 
