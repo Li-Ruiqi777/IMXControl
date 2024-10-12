@@ -14,6 +14,9 @@ buildout ?=
 C_COMPILE ?= $(APP_C_COMPILE)
 CC_COMPILE ?= $(APP_CC_COMPILE)
 
+CFLAGS  := -O3 -std=c++11
+CCFLAGS  := -O3 -std=c++11
+
 ###include Path
 INCLUDES ?= 
 

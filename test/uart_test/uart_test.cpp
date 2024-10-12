@@ -12,8 +12,7 @@ const char *UART_DEVICE_NAME = "/dev/ttymxc4";
 const uint32_t UART_BUFFER_SIZE = 256;
 uint8_t nCacheBuffer[256];
 
-static int set_opt(int nFd, int nBaud, int nDataBits, std::string cParity,
-                   int nStopBits)
+static int set_opt(int nFd, int nBaud, int nDataBits, std::string cParity, int nStopBits)
 {
     struct termios newtio;
     struct termios oldtio;
@@ -83,7 +82,7 @@ static int set_opt(int nFd, int nBaud, int nDataBits, std::string cParity,
     }
     // 最小等待数和最小等待时间，表示不等待
     newtio.c_cc[VTIME] = 0;
-    newtio.c_cc[VMIN] = 0;
+    newtio.c_cc[VMIN] = 1;
 
     tcflush(nFd, TCIFLUSH);
     if ((tcsetattr(nFd, TCSANOW, &newtio)) != 0)
@@ -99,7 +98,7 @@ int main()
     ssize_t nLen;
     std::cout << "start uart test" << std::endl;
     /*开启串口模块*/
-    fd = open(UART_DEVICE_NAME, O_RDWR | O_NOCTTY | O_NDELAY);
+    fd = open(UART_DEVICE_NAME, O_RDWR | O_NOCTTY | O_NONBLOCK);
 
     if (fd > 0)
     {
@@ -113,7 +112,7 @@ int main()
                 nLen = read(fd, nCacheBuffer, UART_BUFFER_SIZE);
                 if (nLen > 0)
                 {
-                  std::cout << "receive data!" << std::endl;
+                    std::cout << "receive data!" << std::endl;
                     write(fd, nCacheBuffer, nLen);
                 }
             }
