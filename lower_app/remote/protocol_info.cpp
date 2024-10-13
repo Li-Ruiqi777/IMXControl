@@ -75,7 +75,7 @@ int ProtocolInfo::CheckRxBuffer(int nFd)
                 if (frame_ptr->id != PROTOCOL_DEVICE_ID)
                 {
                     m_RxBufSize = 0;
-                    USR_DEBUG("Devoce ID Invalid\n");
+                    USR_DEBUG("Device ID: %x isInvalid\n",frame_ptr->id);
                     return RT_INVALID;
                 }
 
@@ -152,7 +152,6 @@ int ProtocolInfo::ExecuteCommand(int nFd)
         m_TxBufSize = CreateTxBuffer(ACK_OK, 0, NULL);
         break;
     case CMD_UPLOAD_CMD:
-        applicationReg->RefreshAllDevice();
         break;
     case CMD_UPLOAD_DATA:
         break;

@@ -9,7 +9,7 @@ public:
     Uart();
     ~Uart();
 
-    void init(int nFd, int nBaudrate, int nDatabits, int nStopbits, std::string nParity);
+    bool init(int nFd, int nBaudrate, int nDatabits, int nStopbits, std::string nParity);
     void start();
     void stop();
 

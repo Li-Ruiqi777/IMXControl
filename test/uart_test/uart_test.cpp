@@ -98,7 +98,8 @@ int main()
     ssize_t nLen;
     std::cout << "start uart test" << std::endl;
     /*开启串口模块*/
-    fd = open(UART_DEVICE_NAME, O_RDWR | O_NOCTTY | O_NONBLOCK);
+    // fd = open(UART_DEVICE_NAME, O_RDWR | O_NOCTTY | O_NONBLOCK);
+    fd = open(UART_DEVICE_NAME, O_RDWR);
 
     if (fd > 0)
     {
