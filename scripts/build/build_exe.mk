@@ -14,14 +14,14 @@ buildout ?=
 C_COMPILE ?= $(APP_C_COMPILE)
 CC_COMPILE ?= $(APP_CC_COMPILE)
 
-CFLAGS  := -O3 -std=c++11
-CCFLAGS  := -O3 -std=c++11
+CFLAGS  := -O3 -std=c++11 -g
+CCFLAGS  := -O3 -std=c++11 -g
 
 ###include Path
 INCLUDES ?= 
 
 ###include library
-library ?= 
+library ?= pthread
 
 ###c/cpp objects for build
 object ?=
@@ -56,9 +56,9 @@ all : $(buildout)
 #build excutable file
 $(buildout): $(objects)
 ifeq ("${cpp_objects}", "")
-	$(C_COMPILE) -o $(buildout) $(objects) $(library) $(CFLAGS)
+	$(C_COMPILE) -o $(buildout) $(objects) -l$(library) $(CFLAGS)
 else
-	$(CC_COMPILE) -o $(buildout) $(objects) $(library) $(CCFLAGS) 
+	$(CC_COMPILE) -o $(buildout) $(objects) -l$(library) $(CCFLAGS)
 endif
 	rm -rf $(objects)
 	mkdir -m 755 -p ${run_dist}/

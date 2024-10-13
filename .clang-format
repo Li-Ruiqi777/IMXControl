@@ -11,6 +11,8 @@ AllowShortLambdasOnASingleLine: false
 SpaceBeforeParens: ControlStatements
 ColumnLimit: 110
 AccessModifierOffset: -4
+AlignConsecutiveMacros: true
+
 
 # AlignConsecutiveDeclarations: true
 # AlignConsecutiveAssignments: true
